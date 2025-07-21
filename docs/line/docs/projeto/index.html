@@ -1,0 +1,1658 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Autonomous Line-Following Robot">
+      
+      
+        <meta name="author" content="Eduardo Furlan">
+      
+      
+        <link rel="canonical" href="https://efurlanm.github.io/robot/projeto/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../metodologia/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Projeto - Robot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#projeto-robo-autonomo-seguidor-de-linha" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Robot" class="md-header__button md-logo" aria-label="Robot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Robot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Projeto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://www.github.com/efurlanm/robot/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    robot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Robot" class="md-nav__button md-logo" aria-label="Robot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Robot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://www.github.com/efurlanm/robot/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    robot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Projeto
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projeto
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enunciado-do-problema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enunciado do Problema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#justificativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Justificativa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#competicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competição
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Competição">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infraestrutura-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infraestrutura do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestao-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestão do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comunicacao-e-suporte-durante-o-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicação e Suporte Durante o Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguranca-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Segurança do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacao-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentação do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plano-de-contingencia-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plano de Contingência do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premiacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Premiação
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-competicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemplos de Competições
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lista-de-materiais-bill-of-materials-bom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lista de Materiais (Bill of Materials - BOM)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-de-projeto-de-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquivos de Projeto de Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitetura-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitetura de Software
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-e-software-de-codigo-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware e Software de Código Aberto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodologia-de-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metodologia de Projeto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metodologia de Projeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-a-disciplina" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relação com a Disciplina
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cronograma-sugerido" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cronograma Sugerido
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#divisao-de-responsabilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Divisão de Responsabilidades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diario-de-bordo-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diário de Bordo do Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registro-da-evolucao-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registro da Evolução do Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publicacao-academica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publicação Acadêmica
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portfolio-academico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Portfólio Acadêmico
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Portfólio Acadêmico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrutura-do-portfolio-online" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estrutura do Portfólio Online
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identificacao-da-equipe-e-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identificação da Equipe e Domínio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso-de-ferramentas-de-inteligencia-artificial-ia-no-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso de Ferramentas de Inteligência Artificial (IA) no Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testes-e-validacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testes e Validação
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trabalhos-futuros-e-recomendacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trabalhos Futuros e Recomendações
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glossário
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-online-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos Online e Referências
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos Online e Referências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-projetos-de-robos-e-de-trabalhos-academicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemplos de Projetos de Robôs e de Trabalhos Acadêmicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guias-modelos-e-ferramentas-para-projeto-documentacao-e-publicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guias, Modelos e Ferramentas para Projeto, Documentação e Publicação
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-tecnicos-especificos-robo-seguidor-de-linha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos Técnicos Específicos (Robô Seguidor de Linha)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metodologia
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regulamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Regulamento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../montagem_operacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Montagem e Operação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comunicacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Comunicacao
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../galeria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Galeria e Resultados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sobre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sobre
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enunciado-do-problema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enunciado do Problema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#justificativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Justificativa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#competicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competição
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Competição">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infraestrutura-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infraestrutura do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestao-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestão do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comunicacao-e-suporte-durante-o-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicação e Suporte Durante o Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguranca-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Segurança do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacao-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentação do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plano-de-contingencia-do-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plano de Contingência do Evento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premiacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Premiação
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-competicoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemplos de Competições
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lista-de-materiais-bill-of-materials-bom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lista de Materiais (Bill of Materials - BOM)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-de-projeto-de-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquivos de Projeto de Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitetura-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitetura de Software
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-e-software-de-codigo-aberto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware e Software de Código Aberto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodologia-de-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metodologia de Projeto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metodologia de Projeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relacao-com-a-disciplina" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relação com a Disciplina
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cronograma-sugerido" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cronograma Sugerido
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#divisao-de-responsabilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Divisão de Responsabilidades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diario-de-bordo-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diário de Bordo do Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registro-da-evolucao-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registro da Evolução do Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publicacao-academica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publicação Acadêmica
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portfolio-academico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Portfólio Acadêmico
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Portfólio Acadêmico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrutura-do-portfolio-online" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estrutura do Portfólio Online
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identificacao-da-equipe-e-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identificação da Equipe e Domínio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso-de-ferramentas-de-inteligencia-artificial-ia-no-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso de Ferramentas de Inteligência Artificial (IA) no Projeto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testes-e-validacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testes e Validação
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trabalhos-futuros-e-recomendacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trabalhos Futuros e Recomendações
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glossário
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-online-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos Online e Referências
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos Online e Referências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-de-projetos-de-robos-e-de-trabalhos-academicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemplos de Projetos de Robôs e de Trabalhos Acadêmicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guias-modelos-e-ferramentas-para-projeto-documentacao-e-publicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guias, Modelos e Ferramentas para Projeto, Documentação e Publicação
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-tecnicos-especificos-robo-seguidor-de-linha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos Técnicos Específicos (Robô Seguidor de Linha)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="projeto-robo-autonomo-seguidor-de-linha">Projeto: Robô Autônomo Seguidor de Linha</h1>
+<p>Este documento detalha os objetivos, entregas, metodologia e recursos essenciais para o projeto de desenvolvimento e competição de um robô seguidor de linha, culminando na documentação e publicação dos resultados.</p>
+<h2 id="enunciado-do-problema">Enunciado do Problema</h2>
+<p>Este projeto propõe o desenvolvimento, construção e documentação de um robô seguidor de linha com potencial aplicação industrial. A etapa inicial envolve a prototipagem em escala reduzida, empregando a plataforma Arduino. Para validação conceitual, o protótipo será avaliado em um ambiente competitivo. Adicionalmente, será produzida documentação abrangente, incluindo um artigo científico e um guia detalhado, ambos de acesso público e disponíveis online. O hardware e o software a serem utilizados deverão ser de domínio público, de natureza livre e de código aberto.</p>
+<h2 id="justificativa">Justificativa</h2>
+<ul>
+<li><strong>Relevância Acadêmica e Popularidade:</strong> a robótica, notadamente o segmento de robôs seguidores de linha, demonstra significativa relevância acadêmica e popularidade, sendo um tema recorrente em eventos como RoboCup, FIRA Brasil, Torneio Sesi de Robótica, FreeBots, Arena Robótica, RoboFEI, IronCup, e em diversas instituições de ensino superior (e.g., UFABC, UFSJ, Poli/USP, IFPR, UFES).</li>
+<li><strong>Desenvolvimento de Competências:</strong> o projeto fomenta o desenvolvimento de habilidades essenciais, tais como trabalho em equipe e integração de conhecimentos multidisciplinares.</li>
+<li><strong>Introdução a Conceitos de Inteligência Artificial (IA):</strong><ul>
+<li>Tomada de decisão</li>
+<li>Reconhecimento de padrões (pista/linha)</li>
+<li>Algoritmos de controle inteligente</li>
+<li>Fundamentação para aprendizado de máquina avançado</li>
+</ul>
+</li>
+<li><strong>Aplicações Práticas e Relevância no Mercado:</strong><ul>
+<li>Logística e transporte</li>
+<li>Manufatura automatizada</li>
+<li>Robótica de serviços (e.g., robôs aspiradores, veículos autônomos)</li>
+<li>Exploração e resgate</li>
+</ul>
+</li>
+<li><strong>Impacto Social:</strong> a robótica educacional constitui uma ferramenta transformadora, estimulando o raciocínio lógico, a criatividade e a autonomia, notadamente em contextos de vulnerabilidade social.</li>
+</ul>
+<h2 id="objetivos">Objetivos</h2>
+<ul>
+<li><strong>Contexto acadêmico:</strong> analisar a relevância do tema na área de estudo e sua conexão com os objetivos do curso, promovendo o aprofundamento de conhecimentos estratégicos.</li>
+<li><strong>Fundamentação teórica:</strong> aplicar conceitos teóricos fundamentais à prática, demonstrando como o projeto impulsiona a inovação e o desenvolvimento técnico.</li>
+<li><strong>Soluções tecnológicas:</strong> desenvolver soluções para problemas específicos por meio de aplicações tecnológicas, gerando benefícios tangíveis para os <em>stakeholders</em>.</li>
+<li><strong>Impacto e resultados:</strong> apresentar os resultados alcançados, as habilidades desenvolvidas durante o processo e a contribuição do projeto para soluções inovadoras e eficientes.</li>
+</ul>
+<h2 id="entregas">Entregas</h2>
+<ul>
+<li>Condução da competição de robô seguidor de linha.</li>
+<li>Documentação completa do projeto, abrangendo:<ul>
+<li>Código-fonte</li>
+<li>Projeto de hardware (esquemáticos, <em>layouts</em>, modelos 3D)</li>
+<li>Registro visual (fotografias e vídeos da evolução e resultados)</li>
+</ul>
+</li>
+<li>Publicação de Artigo Científico em periódicos ou anais de eventos, como:<ul>
+<li><a href="https://eac.pgsscogna.com.br/">Encontro de Atividades Científicas (EAC)</a>.</li>
+<li><a href="https://zenodo.org/">Zenodo</a>.</li>
+</ul>
+</li>
+<li>Disponibilização online do código, hardware e documentação completa no <a href="https://github.com/">GitHub</a>.</li>
+<li>Apresentação do trabalho em seminários internos ou eventos acadêmicos.</li>
+<li>Elaboração de portfólio acadêmico.</li>
+<li>O trabalho final deve ser <strong>reproduzível</strong> e integralmente documentado.</li>
+</ul>
+<h2 id="competicao">Competição</h2>
+<p>A competição será conduzida presencialmente, com as seguintes datas e locais estabelecidos para o segundo semestre de 2025:</p>
+<ul>
+<li><strong>Disputa final:</strong> 03 de Novembro de 2025</li>
+<li><strong>Horário:</strong> 19:00h</li>
+<li><strong>Local:</strong> saguão principal (entrada do prédio)</li>
+</ul>
+<p>Para a execução adequada da competição de robô seguidor de linha, os discentes organizadores serão responsáveis por prover a infraestrutura e a gestão do evento, além de estabelecer as regras:</p>
+<h3 id="infraestrutura-do-evento">Infraestrutura do Evento</h3>
+<ul>
+<li>Montagem e manutenção da pista oficial da competição.</li>
+<li>Disponibilização de espaço adequado (pista, boxes, área para público).</li>
+<li>Provisão de pontos de energia (se aplicável).</li>
+</ul>
+<h3 id="gestao-do-evento">Gestão do Evento</h3>
+<ul>
+<li>Processo de inscrição e <em>check-in</em> das equipes.</li>
+<li>Inspeção técnica dos robôs.</li>
+<li>Cronometragem e apuração de resultados.</li>
+<li>Organização das rodadas/provas.</li>
+<li>Definição de juízes/fiscais.</li>
+<li>Preparação de troféu para os vencedores.</li>
+</ul>
+<h3 id="comunicacao-e-suporte-durante-o-evento">Comunicação e Suporte Durante o Evento</h3>
+<ul>
+<li>Chamada das equipes.</li>
+<li>Suporte e esclarecimento de dúvidas.</li>
+<li>Comunicação de resultados e avisos.</li>
+</ul>
+<h3 id="seguranca-do-evento">Segurança do Evento</h3>
+<ul>
+<li>Garantia da segurança da área da competição.</li>
+<li>Elaboração de plano básico de primeiros socorros.</li>
+</ul>
+<h3 id="documentacao-do-evento">Documentação do Evento</h3>
+<ul>
+<li>Registro fotográfico/videográfico da competição.</li>
+<li>Publicação e divulgação do material em plataformas como YouTube e no site do projeto.</li>
+</ul>
+<h3 id="plano-de-contingencia-do-evento">Plano de Contingência do Evento</h3>
+<ul>
+<li>Identificação de potenciais problemas e definição de procedimentos de mitigação.</li>
+</ul>
+<h3 id="premiacao">Premiação</h3>
+<ul>
+<li>1º lugar: 40 horas complementares e certificado de mérito</li>
+<li>2º lugar: 30 horas complementares</li>
+<li>3º lugar: 20 horas complementares</li>
+<li>Demais:   10 horas complementares</li>
+</ul>
+<h3 id="exemplos-de-competicoes">Exemplos de Competições</h3>
+<p>A pesquisa sobre diversas competições nacionais e internacionais pode fornecer <em>insights</em> e diretrizes para as regras. Alguns exemplos incluem:</p>
+<ul>
+<li><a href="http://www.obr.org.br">Olimpíada Brasileira de Robótica (OBR)</a></li>
+<li><a href="http://www.torneiobrasilderobotica.com.br/">Torneio Brasil de Robótica (TBR)</a></li>
+<li><a href="http://www.firstlegoleague.org/">FIRST LEGO League (FLL)</a></li>
+<li><a href="https://www.ifsp.edu.br/ultimas-noticias/4628-ifsp-abre-inscricoes-para-o-5-torneio-de-robotica">Torneio de Robótica do IFSP (TRIF)</a></li>
+<li><a href="https://www.robocup.org/">RoboCup</a></li>
+<li><a href="https://events.robocore.net/">IronCup</a></li>
+</ul>
+<h2 id="lista-de-materiais-bill-of-materials-bom">Lista de Materiais (Bill of Materials - BOM)</h2>
+<p>Para a reprodução do robô, a seguinte lista de materiais (BOM) detalha os componentes essenciais, incluindo especificações e, quando aplicável, sugestões de fornecedores e custos estimados. Esta seção visa facilitar a aquisição e montagem do hardware.</p>
+<ul>
+<li><strong>Microcontrolador:</strong> Arduino Uno R3<ul>
+<li>Quantidade: 1</li>
+<li>Fornecedor Sugerido: <a href="https://www.filipeflop.com/produto/arduino-uno-r3/">FilipeFlop</a></li>
+<li>Custo Estimado: R$ 80,00</li>
+</ul>
+</li>
+<li><strong>Driver de Motor:</strong> L298N<ul>
+<li>Quantidade: 1</li>
+<li>Fornecedor Sugerido: <a href="https://www.robocore.net/loja/drivers-de-motores/driver-ponte-h-l298n">Robocore</a></li>
+<li>Custo Estimado: R$ 35,00</li>
+</ul>
+</li>
+<li><strong>Sensores Infravermelhos:</strong> Módulo TCRT5000 (5 vias)<ul>
+<li>Quantidade: 1</li>
+<li>Fornecedor Sugerido: <a href="https://eletrogate.com/produto/modulo-sensor-infravermelho-5-vias-tcrt5000/">Eletrogate</a></li>
+<li>Custo Estimado: R$ 45,00</li>
+</ul>
+</li>
+<li><strong>Motores DC com Caixa de Redução:</strong> Motor DC 3-6V com caixa de redução (tipo N20)<ul>
+<li>Quantidade: 2</li>
+<li>Fornecedor Sugerido: <a href="https://www.casadarobotica.com/motor-dc-com-caixa-de-reducao-3-6v-n20.html">Casa da Robótica</a></li>
+<li>Custo Estimado: R$ 25,00 (cada)</li>
+</ul>
+</li>
+<li><strong>Rodas:</strong> Rodas de borracha para robótica (compatíveis com motor N20)<ul>
+<li>Quantidade: 2</li>
+<li>Fornecedor Sugerido: <a href="https://www.robocore.net/loja/rodas/roda-de-borracha-34x7mm">Robocore</a></li>
+<li>Custo Estimado: R$ 10,00 (cada)</li>
+</ul>
+</li>
+<li><strong>Roda Boba:</strong> Roda boba metálica<ul>
+<li>Quantidade: 1</li>
+<li>Fornecedor Sugerido: <a href="https://www.filipeflop.com/produto/roda-boba-metalica/">FilipeFlop</a></li>
+<li>Custo Estimado: R$ 15,00</li>
+</ul>
+</li>
+<li><strong>Chassi:</strong> Acrílico cortado a laser (design personalizado)<ul>
+<li>Quantidade: 1</li>
+<li>Fornecedor Sugerido: [Serviço de corte a laser local]</li>
+<li>Custo Estimado: R$ 50,00</li>
+</ul>
+</li>
+<li><strong>Bateria:</strong> Suporte para 4 pilhas AA com conector P4<ul>
+<li>Quantidade: 1</li>
+<li>Fornecedor Sugerido: <a href="https://eletrogate.com/produto/suporte-para-4-pilhas-aa-com-conector-p4/">Eletrogate</a></li>
+<li>Custo Estimado: R$ 8,00</li>
+</ul>
+</li>
+<li><strong>Fios Jumper:</strong> Kit de fios jumper macho-macho e macho-fêmea<ul>
+<li>Quantidade: 1 kit</li>
+<li>Fornecedor Sugerido: [Qualquer loja de eletrônicos]</li>
+<li>Custo Estimado: R$ 20,00</li>
+</ul>
+</li>
+</ul>
+<h2 id="arquivos-de-projeto-de-hardware">Arquivos de Projeto de Hardware</h2>
+<p>Os arquivos de projeto de hardware, incluindo esquemáticos eletrônicos, layouts de placa de circuito impresso (PCB) e modelos 3D do chassi, são disponibilizados para facilitar a replicação e modificação do robô. Recomenda-se o uso de software de código aberto para visualização e edição desses arquivos.</p>
+<ul>
+<li><strong>Esquemáticos e Layouts de PCB:</strong> (Localização: <code>hardware/schematics/</code>)</li>
+<li><strong>Modelos 3D do Chassi:</strong> (Localização: <code>hardware/3d_models/</code>)</li>
+</ul>
+<h2 id="arquitetura-de-software">Arquitetura de Software</h2>
+<p>A arquitetura de software do robô seguidor de linha é modular, visando clareza, manutenibilidade e extensibilidade. O código-fonte é desenvolvido em C++ para a plataforma Arduino IDE e é organizado em funções e bibliotecas que abstraem as interações com os sensores e atuadores. Os principais módulos incluem:</p>
+<ul>
+<li><strong>Módulo de Leitura de Sensores:</strong> Responsável por adquirir os dados dos sensores infravermelhos, convertendo os sinais analógicos em informações digitais sobre a posição da linha.</li>
+<li><strong>Módulo de Controle de Motores:</strong> Gerencia a velocidade e direção dos motores DC com base nas decisões do algoritmo de controle.</li>
+<li><strong>Algoritmo de Controle:</strong> Implementa a lógica principal para seguir a linha. Pode variar de um controle proporcional (P) simples a um controle PID (Proporcional-Integral-Derivativo) mais avançado para maior precisão e suavidade no movimento.</li>
+<li><strong>Módulo de Comunicação (Opcional):</strong> Permite a interação com o robô via serial ou Bluetooth para depuração e ajuste de parâmetros.</li>
+</ul>
+<h2 id="hardware-e-software-de-codigo-aberto">Hardware e Software de Código Aberto</h2>
+<ul>
+<li>Todo o hardware, software e documentação devem aderir aos princípios de <strong>liberdade, abertura, publicidade, didática, reprodutibilidade e acessibilidade</strong>.</li>
+<li>O hardware pode ser adquirido, mas o <strong>software deve ser integralmente desenvolvido pelas equipes</strong>.</li>
+<li>A licença <strong>LGPL</strong> deve ser utilizada para o software.</li>
+<li>A licença <strong>CC-BY-SA 4.0</strong> deve ser utilizada para a documentação e o hardware.</li>
+</ul>
+<h2 id="metodologia-de-projeto">Metodologia de Projeto</h2>
+<p>O desenvolvimento do trabalho deve empregar uma metodologia formal de gestão de projetos (e.g., 5W2H), fundamentada em referências como <a href="https://cm-kls-content.s3.amazonaws.com/201602/INTERATIVAS_2_0/GESTAO_DE_PROJETOS/U1/LIVRO_UNICO.pdf">Gestão de Projetos - Livro Online</a>.</p>
+<p>Os principais elementos metodológicos a serem elaborados e apresentados incluem:</p>
+<ul>
+<li><strong>Escopo do Projeto:</strong><ul>
+<li>Definição clara das funcionalidades do robô (requisitos mínimos e bônus).</li>
+<li><strong>Especificações Técnicas do Robô:</strong> pesquisa e seleção de componentes (sensores, microcontrolador, motores, <em>drivers</em>, fonte de energia) e abordagem do algoritmo de controle, com justificativa das escolhas (baseada em projetos existentes e competições online).</li>
+<li><strong>Regras da Competição:</strong> pesquisa e definição do regulamento detalhado (dimensões/peso do robô, características da pista, cronometragem, penalidades - fundamentado em regulamentos existentes). A regra existente pode ser utilizada como base, devendo ser formalizada até a terceira semana de aulas.</li>
+<li>Definição do Artigo (objetivo, estrutura, público-alvo).</li>
+<li>Estrutura Analítica do Projeto (EAP) / <em>Work Breakdown Structure</em> (WBS): Detalhamento das tarefas do projeto (robô + artigo).</li>
+</ul>
+</li>
+<li><strong>Gerenciamento de Tempo:</strong> cronograma com tarefas e marcos. Ferramentas como o <a href="https://www.ganttproject.biz/">GanttProject</a> podem ser utilizadas.</li>
+<li><strong>Gerenciamento de Recursos:</strong> definição da equipe, responsabilidades, lista básica de materiais/equipamentos e plano de aquisição.</li>
+<li><strong>Gerenciamento da Qualidade:</strong> estabelecimento de critérios de sucesso (robô e artigo) e procedimentos de teste.</li>
+<li><strong>Gerenciamento da Comunicação:</strong> <a href="../comunicacao/">Utilização de ferramentas (e.g., Discord)</a>.</li>
+<li><strong>Gerenciamento de Riscos:</strong> identificação preliminar de riscos e elaboração de Plano de Contingência.</li>
+<li><strong>Gerenciamento das Aquisições (básico):</strong> planejamento para a obtenção de materiais.</li>
+</ul>
+<h3 id="relacao-com-a-disciplina">Relação com a Disciplina</h3>
+<p>É imperativo que o projeto evidencie sua conexão com a disciplina, visando tornar o aprendizado mais significativo e contextualizado. Exemplos incluem:</p>
+<ul>
+<li>A programação do robô demanda o desenvolvimento de algoritmos e a aplicação de estruturas de controle, como condicionais (<em>if/else</em>) e laços de repetição (<em>for/while</em>).</li>
+<li>Aquisição de proficiência em linguagens de programação como C/C++, Arduino IDE, Python, entre outras.</li>
+<li>O processamento dos dados dos sensores pode envolver o uso de <em>arrays</em>, listas ou outras estruturas de dados.</li>
+</ul>
+<h2 id="cronograma-sugerido">Cronograma Sugerido</h2>
+<p>Um projeto de robótica pode ser segmentado em diversas fases ao longo de um semestre ou ano. A seguir, um cronograma exemplificativo baseado em um projeto real:</p>
+<ul>
+<li>
+<p><strong>Mês 1: Fundamentação</strong></p>
+<ul>
+<li>Pesquisa sobre montagem de robôs.</li>
+<li>Pesquisa sobre noções de componentes elétricos e plataforma Arduino.</li>
+<li>Organização das equipes e espaços de trabalho.</li>
+<li>Pesquisa sobre programação em C/C++ e para Arduino.</li>
+<li>Aprofundamento em lógica de programação.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mês 2: Preparação para Competições</strong></p>
+<ul>
+<li>Análise de regulamentos e inscrições para torneios (e.g., OBR, FLL, TRIF, TBR).</li>
+<li>Desenvolvimento do protótipo do robô.</li>
+<li>Treinamento intensivo, incluindo atividades em fins de semana.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mês 3: Projeto e Inovação</strong></p>
+<ul>
+<li>Desenvolvimento de um projeto de inovação (comum em torneios como o FLL).</li>
+<li>Sessões de <em>brainstorming</em> e dinâmicas para estimular a criatividade e o trabalho em equipe.</li>
+<li>Construção do protótipo final e estabelecimento de metas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mês 4: Eventos e Finalização</strong></p>
+<ul>
+<li>Realização de um torneio interno para testes.</li>
+<li>Participação em eventos e competições externas.</li>
+<li>Apresentação dos resultados e projetos finais.</li>
+</ul>
+</li>
+</ul>
+<h2 id="divisao-de-responsabilidades">Divisão de Responsabilidades</h2>
+<ul>
+<li><strong>Desenvolvimento Web:</strong> criação e manutenção do website da equipe.</li>
+<li><strong>Banco de Dados:</strong> desenvolvimento e gestão de um banco de dados para peças, custos, datas, fotografias, vídeos, etc.</li>
+<li><strong>Redes:</strong> estabelecimento da infraestrutura de comunicação entre dispositivos (celular, microcontrolador, robô).</li>
+<li><strong>Programadores:</strong> desenvolvimento do código do robô, utilizando linguagens como C/C++, Arduino IDE, entre outras.</li>
+<li><strong>Construtores:</strong> responsáveis pela montagem física do robô, incluindo estrutura, motores, sensores, etc.</li>
+<li><strong>Designers:</strong> responsáveis pelo design do robô, considerando a otimização para o desafio (com documentação pertinente).</li>
+<li><strong>Estrategistas:</strong> análise do regulamento e definição das estratégias para a competição.</li>
+<li><strong>Documentadores:</strong> registro do processo de desenvolvimento, elaboração de relatórios, captação de imagens (fotografias e vídeos), redação, e divulgação em plataformas como o site e YouTube.</li>
+<li><strong>Integração/Organização:</strong> participação na integração de componentes, organização geral do projeto, e apoio na captação de imagens.</li>
+</ul>
+<h2 id="diario-de-bordo-do-projeto">Diário de Bordo do Projeto</h2>
+<ul>
+<li>Recomenda-se a manutenção de um diário de bordo detalhado.</li>
+<li>É fundamental registrar todas as atividades.</li>
+<li>Sugere-se dedicar 30 minutos diários para o registro.</li>
+<li>A postergação do registro pode resultar na perda de informações.</li>
+<li>A documentação escrita é essencial, não se limitando ao registro mental.</li>
+<li>Registrar: quem, como, onde, por que, para que, e dúvidas.</li>
+<li>Considerar o uso de plataformas para o diário.</li>
+</ul>
+<h2 id="registro-da-evolucao-do-projeto">Registro da Evolução do Projeto</h2>
+<p>O registro contínuo da evolução do projeto é fundamental para a documentação final. Recomenda-se designar um <strong>responsável</strong> pela consistência do registro.</p>
+<ul>
+<li><strong>Métodos de Registro:</strong> anotações diárias, fotografias (progresso, testes), vídeos (funcionamento, demonstrações).</li>
+<li>O registro detalhado subsidia a elaboração do relatório final e as apresentações em seminários.</li>
+<li>A evolução do projeto deverá ser publicada online (usar os modelos: <a href="https://fabacademy.org/2024/people.html">Fab Academy 2024</a>, <a href="https://fabacademy.org/2023/people.html">Fab Academy 2023</a>).</li>
+</ul>
+<h2 id="publicacao-academica">Publicação Acadêmica</h2>
+<p>A publicação dos resultados do trabalho é de suma importância. A qualidade da documentação e das referências é crucial.</p>
+<ul>
+<li>Seguir as diretrizes do 28º EAC. Para o 2º Semestre, uma publicação ocorrerá no EAC, e outra no Zenodo.</li>
+<li>O formato de publicação deve seguir o modelo do <a href="https://eac.pgsscogna.com.br/">Encontro de Atividades Científicas (EAC)</a>.</li>
+<li>Todas as fontes consultadas devem ser devidamente referenciadas (<a href="https://www.furb.br/web/upl/arquivos/201210081830180.Fontes_2010.pdf?20230627183338">Guia FURB</a>).</li>
+<li>Todas as figuras, tabelas e imagens devem possuir indicação da fonte (<a href="https://normas-abnt.espm.br/index.php?title=Figuras">Guia ESPM</a>).</li>
+<li><strong>Aspectos Éticos:</strong> é imprescindível o rigor ético em relação a direitos autorais e <strong>plágio</strong>. A citação correta das fontes é obrigatória. A coautoria com docentes que acompanharam o projeto deve ser considerada, se apropriado (consultar professores e coordenador).</li>
+</ul>
+<h2 id="portfolio-academico">Portfólio Acadêmico</h2>
+<p>O portfólio constitui parte integrante do projeto da disciplina, sendo individual para cada participante. É uma ferramenta essencial para o início da carreira profissional, contribuindo para a visibilidade, reconhecimento e construção de confiança no trabalho desenvolvido, além de diferenciar o profissional no mercado e ampliar suas oportunidades. Facilita a avaliação e análise das competências, proporcionando uma visão clara das conquistas. Um portfólio bem elaborado reflete a dedicação e a paixão pela área de atuação, funcionando como uma vitrine da marca pessoal.</p>
+<h3 id="estrutura-do-portfolio-online">Estrutura do Portfólio Online</h3>
+<ul>
+<li>O portfólio deve incluir uma Página Principal (<em>Landing Page</em> / <em>Home Page</em>).</li>
+<li>Funciona como um "índice" ou resumo executivo dos trabalhos.</li>
+<li>Deve ser concisa, objetiva, visualmente atraente e com design limpo.</li>
+<li>Utilizar frases sucintas e múltiplos links para direcionar o visitante.</li>
+<li>Criar subpáginas dedicadas para detalhes de cada projeto.</li>
+<li>As descrições dos projetos devem ser resumidas, claras, lógicas e focadas na metodologia/pesquisa.</li>
+<li>Hospedar código/arquivos externos (e.g., GitHub) e incluir links diretos.</li>
+<li>Solicitar <em>feedback</em> a docentes e colegas para identificar oportunidades de aprimoramento.</li>
+<li>O portfólio serve como um "índice" que conterá os endereços do website do projeto, canal do YouTube, DOI do artigo, entre outros.</li>
+</ul>
+<h2 id="identificacao-da-equipe-e-dominio">Identificação da Equipe e Domínio</h2>
+<ul>
+<li>Definir em conjunto o nome da equipe.</li>
+<li>Criar uma conta no GitHub com o nome da equipe (e.g., <code>http://www.github.com/melancia</code>).</li>
+<li>Criar um repositório denominado <code>melancia.github.io</code> e configurar o GitHub Pages.</li>
+<li>O site do projeto estará acessível em <code>http://melancia.github.io</code>.</li>
+</ul>
+<h2 id="uso-de-ferramentas-de-inteligencia-artificial-ia-no-projeto">Uso de Ferramentas de Inteligência Artificial (IA) no Projeto</h2>
+<p>Ferramentas de IA Generativa (e.g., Gemini, Copilot) podem ser utilizadas como auxílio, desde que o uso seja <strong>ético, responsável e transparente</strong>.</p>
+<ul>
+<li><strong>IA como suporte, não substituição:</strong> útil para <em>brainstorming</em>, sugestões de código/texto, revisão gramatical e resumos (sempre com verificação). Não substitui o pensamento crítico e a análise humana.</li>
+<li><strong>Verificação crítica essencial:</strong> <strong>nunca confiar cegamente</strong>. A IA pode gerar informações incorretas ("alucinações"). Todas as informações devem ser verificadas com fontes confiáveis e o conhecimento do usuário.</li>
+<li><strong>Plágio e originalidade:</strong> o conteúdo gerado por IA não é de autoria do usuário. A cópia direta constitui <strong>plágio</strong>. Utilizar a IA para ideias, mas a criação e redação finais devem ser originais.</li>
+<li><strong>Transparência e citação:</strong> declarar explicitamente o uso de IA (quais ferramentas, para qual finalidade). Referenciar a IA utilizada (a própria ferramenta pode auxiliar nesta citação).</li>
+<li><strong>Uso ético:</strong> empregar a IA para auxiliar no aprendizado, com transparência e respeito aos direitos autorais.</li>
+<li><strong>Ferramentas de detecção:</strong> instituições acadêmicas utilizam ferramentas para identificar conteúdo gerado por IA e plágio.</li>
+</ul>
+<h2 id="testes-e-validacao">Testes e Validação</h2>
+<p>A validação do desempenho do robô é realizada através de uma série de testes sistemáticos, garantindo a conformidade com os requisitos de projeto e a otimização do comportamento em pista.</p>
+<ul>
+<li><strong>Testes de Unidade:</strong> verificação individual de componentes (sensores, motores) para assegurar seu funcionamento adequado.</li>
+<li><strong>Testes de Integração:</strong> avaliação da interação entre os módulos de hardware e software.</li>
+<li><strong>Testes de Sistema:</strong> medição do desempenho global do robô na pista, incluindo:<ul>
+<li><strong>Tempo de Percurso:</strong> registro do tempo necessário para completar o circuito.</li>
+<li><strong>Precisão no Seguimento de Linha:</strong> análise da capacidade do robô de manter-se sobre a linha.</li>
+<li><strong>Robustez:</strong> avaliação do desempenho em diferentes condições de iluminação e pequenas variações na pista.</li>
+</ul>
+</li>
+</ul>
+<h2 id="trabalhos-futuros-e-recomendacoes">Trabalhos Futuros e Recomendações</h2>
+<p>Este projeto serve como uma base para futuras pesquisas e desenvolvimentos. As seguintes áreas são sugeridas para trabalhos futuros:</p>
+<ul>
+<li><strong>Otimização do Algoritmo de Controle:</strong> implementação e ajuste fino de algoritmos PID avançados ou técnicas de controle adaptativo para melhorar a velocidade e a precisão.</li>
+<li><strong>Detecção e Desvio de Obstáculos:</strong> integração de sensores adicionais (e.g., ultrassom, infravermelho de distância) para permitir que o robô detecte e desvie de obstáculos na pista.</li>
+<li><strong>Comunicação Wireless Avançada:</strong> desenvolvimento de um sistema de telemetria para monitoramento em tempo real do robô e ajuste de parâmetros via comunicação sem fio.</li>
+<li><strong>Visão Computacional:</strong> utilização de câmeras para reconhecimento de padrões mais complexos na pista ou identificação de objetos.</li>
+<li><strong>Otimização de Hardware:</strong> redução do tamanho e peso do robô, otimização do consumo de energia e exploração de materiais alternativos para o chassi.</li>
+</ul>
+<h2 id="glossario">Glossário</h2>
+<ul>
+<li><strong>Arduino IDE:</strong> ambiente de Desenvolvimento Integrado para a plataforma Arduino.</li>
+<li><strong>BOM (Bill of Materials):</strong> lista de Materiais.</li>
+<li><strong>CAD (Computer-Aided Design):</strong> projeto Assistido por Computador.</li>
+<li><strong>Chassi:</strong> Estrutura física do robô.</li>
+<li><strong>Driver de Motor:</strong> circuito eletrônico que controla a potência e direção dos motores.</li>
+<li><strong>EAP (Estrutura Analítica do Projeto):</strong> decomposição hierárquica do trabalho do projeto.</li>
+<li><strong>IA (Inteligência Artificial):</strong> campo da ciência da computação que desenvolve máquinas capazes de simular a inteligência humana.</li>
+<li><strong>L298N:</strong> circuito integrado com ponte H dupla, comumente usado como driver de motor.</li>
+<li><strong>Layout:</strong> disposição física dos componentes em uma placa de circuito impresso.</li>
+<li><strong>PCB (Printed Circuit Board):</strong> Placa de Circuito Impresso.</li>
+<li><strong>PID (Proporcional-Integral-Derivativo):</strong> tipo de controlador de feedback amplamente utilizado em sistemas de controle.</li>
+<li><strong>Robô Autônomo:</strong> robô capaz de operar sem intervenção humana direta.</li>
+<li><strong>Robô Seguidor de Linha:</strong> robô projetado para seguir uma linha predefinida no chão.</li>
+<li><strong>TCRT5000:</strong> sensor infravermelho de refletância, comumente usado para detecção de linha.</li>
+<li><strong>WBS (Work Breakdown Structure):</strong> Estrutura Analítica do Projeto (EAP).</li>
+</ul>
+<h2 id="recursos-online-e-referencias">Recursos Online e Referências</h2>
+<p>Esta seção consolida links e referências úteis, organizados por categoria:</p>
+<h3 id="exemplos-de-projetos-de-robos-e-de-trabalhos-academicos">Exemplos de Projetos de Robôs e de Trabalhos Acadêmicos</h3>
+<ul>
+<li><strong>Referências de Equipes de Robótica:</strong><ul>
+<li>Ironcup 2018 - Seguidor de linha: <a href="https://youtu.be/ET_KOCVGc98">vídeo</a></li>
+<li>Robô Sloth, Project Neon (UFABC): <a href="https://projectneon.dev/">Página</a>, <a href="https://github.com/project-neon">Github</a>, <a href="https://www.youtube.com/@ProjectNeon">Youtube</a>, <a href="https://www.instagram.com/projectneon/">Instagram</a>, <a href="https://www.facebook.com/ufabc.neon">Facebook</a></li>
+<li>Equipe Robocap (UFSJ): <a href="https://www.ufsj.edu.br/noticias_ler.php?codigo_noticia=6843">notícia</a>, <a href="https://www.facebook.com/equiperobocapufsj/">Facebook</a>, <a href="https://equiperobocap.wixsite.com/equiperobocap">Web</a></li>
+<li>ThundeRatz (Poli/USP): <a href="https://thunderatz.org/">página</a>, <a href="https://github.com/ThundeRatz/">Github</a>, <a href="https://thunderatz.org/projects/robots/tracer">Robô Tracer</a>, <a href="https://thunderatz.org/projects/robots/redondinho">Robô Redondinho</a>, <a href="https://youtu.be/w3KJgNGFeb8">vídeo Iron Cup 2020</a>, <a href="https://youtu.be/p9-iju_-pMw">vídeo Summer Challenge 2012</a>, <a href="https://docplayer.com.br/63261771-Memorial-da-participacao-da-thunderatz-no-winter-challenge-10a-edicao.html">Memorial Winter Challenge</a>, <a href="https://nataliakreuser.wordpress.com/2015/02/13/urc-conheca-a-equipe-thunderatz/">Blog Natalia Kreuser</a>, <a href="https://www.instagram.com/thunderatz/">Instagram</a>, <a href="https://pt.wikipedia.org/wiki/ThundeRatz">Wikipedia</a></li>
+<li>Trincabotz (CEFET-MG): <a href="https://trincabotz.com.br/">site</a>, <a href="https://twitter.com/trincabotz">Twitter</a>, <a href="https://www.instagram.com/trincabotz/">Instagram</a>, <a href="https://youtu.be/Ad8XyKWhwE0">vídeo IronCup 2020 Artemis</a>, <a href="https://youtu.be/z0spzWxJKxU">vídeo WCXII Ártemis</a>, <a href="https://youtu.be/Io-2ewbmxWI">vídeo SRC 2018</a>, <a href="https://youtu.be/7ALRWt8QVME">vídeo Iron cup 2019 Nêmesis e Ártemis</a>, <a href="https://www.youtube.com/watch?v=_TBno_ChXeY">vídeo Iron Cup 2023 Perseguidor</a></li>
+<li>Robotic4All (IFPR): <a href="https://github.com/Robotic4All">Github</a>, <a href="https://www.facebook.com/Robotic4All">Facebook</a>, <a href="https://youtu.be/iDTZZb-7LKk">vídeo Salão Robótica 2019</a>, <a href="https://youtu.be/epmw1bu26Po">vídeo Clóvis Robô</a></li>
+<li>ERUS (UFES): <a href="https://github.com/erufes">Github</a></li>
+</ul>
+</li>
+<li><strong>Exemplos de Trabalhos Acadêmicos (Artigos, TCCs, Anais EAC 2023):</strong><ul>
+<li>BARONE, H. M. et al. <strong>Programação e Desenvolvimento de Banco de Dados</strong>. <a href="https://repositorio.pgsscogna.com.br//handle/123456789/72992">Artigo EAC 2023</a>.</li>
+<li>FILENO, J. D. S. et al. <strong>Passo a Passo da Criação de um Robô com Placa de Arduino</strong>. <a href="https://repositorio.pgsscogna.com.br/handle/123456789/73782">Artigo EAC 2023</a>.</li>
+<li>MORAES JUNIOR, M. R. D. et al. <strong>Trabalho de Linguagem de Programação</strong>. <a href="https://repositorio.pgsscogna.com.br/handle/123456789/73471">Artigo EAC 2023</a>.</li>
+<li>LIMA, M. A. O. et al. <strong>Dando Asas à Criatividade com a Plataforma Arduino</strong>. <a href="https://repositorio.pgsscogna.com.br/handle/123456789/71957">Artigo EAC 2023</a>.</li>
+<li>PEREIRA, M. E. et al. <strong>Robô Seguidor de Linha</strong>. <a href="https://repositorio.pgsscogna.com.br/handle/123456789/71813">Artigo EAC 2023</a>.</li>
+<li>NERO, J. C. C. D., &amp; Miranda, E. F. <strong>Gerenciamento de Banco de Dados</strong>. <a href="https://repositorio.pgsscogna.com.br/handle/123456789/73614">Artigo EAC 2023</a>.</li>
+<li>SILVA, J. V. B. D., &amp; Miranda, E. F. <strong>Carrinho Educativo Controlado por Bluetooth</strong>. <a href="https://repositorio.pgsscogna.com.br/handle/123456789/73423">Artigo EAC 2023</a>.</li>
+<li>SOUZA, L. D. A. et al. <strong>Fases da Compilação na Utilização do Arduino Uno</strong>. <a href="https://repositorio.pgsscogna.com.br/handle/123456789/72000">Artigo EAC 2023</a>.</li>
+<li>SOUZA, L. D. A. et al. <strong>Utilização do Microcontrolador Arduino para a Construção de um Robô Seguidor de Linha</strong>. <a href="https://repositorio.pgsscogna.com.br/handle/123456789/73747">Artigo EAC 2023</a>.</li>
+<li>BANDEIRA, M. S.; CARNEIRO, R. S. (UFRJ, 2021). <strong>Projeto Básico de Robô Seguidor de Linha Controlado por Arduino</strong> (Exemplo de TCC). <a href="https://app.uff.br/riuff/bitstream/handle/1/22265/TCC%20Matheus%20Bandeira%20e%20Rog%E9rio%20Carneiro_vSemAssinatura%20(1).pdf;jsessionid=C9A837B0A3C48D58A13FE0A8CA14BA4A?sequence=1">PDF</a>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="guias-modelos-e-ferramentas-para-projeto-documentacao-e-publicacao">Guias, Modelos e Ferramentas para Projeto, Documentação e Publicação</h3>
+<ul>
+<li><strong>Metodologia de Projeto:</strong> <a href="https://cm-kls-content.s3.amazonaws.com/201602/INTERATIVAS_2_0/GESTAO_DE_PROJETOS/U1/LIVRO_UNICO.pdf">Gestão de Projetos - Livro Online</a>.</li>
+<li><strong>Registro da Evolução (Modelos Fab Academy):</strong> <a href="https://fabacademy.org/2024/people.html">2024</a>, <a href="https://fabacademy.org/2023/people.html">2023</a>.</li>
+<li><strong>Plataformas de Publicação Online:</strong> <a href="https://eac.pgsscogna.com.br/">EAC</a>, <a href="https://zenodo.org/">Zenodo</a>.</li>
+<li><strong>Guias de Normatização (Referências, Figuras - ABNT):</strong> <a href="https://www.furb.br/web/upl/arquivos/201210081830180.Fontes_2010.pdf?20230627183338">Fontes (FURB)</a>, <a href="https://normas-abnt.espm.br/index.php?title=Figuras">Figuras (ESPM)</a>.</li>
+<li><strong>Modelos de Artigo:</strong> <a href="http://paginapessoal.utfpr.edu.br/tiagolacerda/modelo-artigo-cientifico/MODELO%20PARA%20ELABORAR%20ARTIGO%20CIENTIFICO.doc/view">Modelo (UTFPR)</a>, <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/pamm.201900373">Exemplo Curto (Wiley)</a>.</li>
+<li><strong>Revistas Científicas (Sugestões):</strong> RSC (<a href="https://revistas.unifacs.br/index.php/rsc/index">UNIFACS</a>), Computação Brasil (<a href="https://www.sbc.org.br/home/publicacoes-mainmenu/computacao-brasil">SBC</a>), e-Locução (<a href="https://periodicos.faex.edu.br/index.php/e-Locucao">FAEX</a>), <a href="https://www.scielo.br/">SciELO</a>.</li>
+<li><strong>Ferramentas de Controle de Versão e Hospedagem:</strong> <a href="https://github.com/">GitHub</a>.</li>
+<li><strong>Gerenciamento de Referências:</strong> <a href="https://www.zotero.org/">Zotero</a>.</li>
+<li><strong>Identificador de Autor:</strong> <a href="https://orcid.org/">ORCID</a>.</li>
+<li><strong>Ferramentas de Portfólio:</strong> <a href="https://sites.google.com/">Google Sites</a>.</li>
+<li><strong>Recursos sobre Git e Github:</strong> <a href="https://youtu.be/DqTITcMq68k">vídeos (R. Ballerini)</a>, <a href="https://youtu.be/P9xXbEhqhqA">vídeos (ATTEKITA DEV)</a>, <a href="https://youtu.be/IfrMAmav9dQ">vídeos (JOHN)</a>, <a href="https://youtu.be/UbJLOn1PAKw">vídeos (F. Fontoura)</a>, <a href="https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA">Curso @Curso em vídeo</a>, <a href="https://youtu.be/1QTi8nIlK1o">conta Github @Curso em vídeo</a>, <a href="https://youtu.be/Prixgo_pXUI">conta Github (MINHASTACK)</a>, <a href="https://youtu.be/-I4Aa8wef8s">Git e Github (por Mucharski)</a>.</li>
+<li><strong>Recursos sobre Documentação e Publicação com GitHub Pages:</strong> <a href="https://youtu.be/EuTM48lxtsE">vídeos (DOTCODE)</a>, <a href="https://youtu.be/5B4bHSiOOO8">vídeos (P. Dinâmica)</a>, <a href="https://youtu.be/k7rkjVfuB2M">vídeos (R. Galleani)</a>, <a href="https://youtu.be/fu6mHp4ud4s">vídeos (F. Barbosa - Portfólio)</a>, <a href="https://youtu.be/EJGMZfeTX-4">vídeos (F. Barbosa - Portfólio HTML/CSS/JS)</a>, <a href="https://www.youtube.com/live/GW6nAJ1NHUQ">vídeos (E. Mendes - MkDocs)</a>.</li>
+<li><strong>Recursos sobre MkDocs:</strong> <a href="https://youtu.be/M5Ck4lvBn7w">MkDocs Material (por Wildemberg Sales)</a>, <a href="https://youtu.be/xlABhbnNrfl">MkDocs Material (por James Willett)</a>.</li>
+<li><strong>Recursos sobre Portfólio digital:</strong> <a href="https://efurlanm.github.io/teach-perfil.html">modelo exemplo</a>, <a href="https://youtu.be/gZmSJfgNmw0">vídeos (Como criar Portfólio Digital Acadêmico)</a>, <a href="https://youtu.be/3yq8k3uZOBw">vídeos (COMO CRIAR SEU PORTFOLIO DIGITAL)</a>, <a href="https://youtu.be/hq05xIDpaYw">vídeos (Como publicar o seu Portfólio)</a>, <a href="https://www.youtube.com/live/_fjuGzLZyRc">vídeos</a>, <a href="https://youtu.be/GIRhSGCgbrY">vídeos</a>.</li>
+<li><strong>Recursos sobre IA para trabalhos acadêmicos:</strong> <a href="https://youtu.be/YjNPo4400Mk">Como Escrever Artigos Científicos Com o ChatGPT</a>, <a href="https://youtu.be/SareSYAmB9E">Use o ChatGPT Para Trabalhos Acadêmicos</a>, <a href="https://youtu.be/P520jhF4phQ">COMO FAZER TCC COM CHATGPT</a>, <a href="https://youtu.be/CZUVD7c2LdM">COMO USAR O CHATGPT PARA ESCREVER ARTIGOS</a>, <a href="https://youtu.be/RGNOucYHo_M">ChatGPT: guia de uso para trabalhos científicos</a>.</li>
+<li><strong>Recursos Gerais (Seminário, Relatório, Projeto):</strong> <a href="https://sites.google.com/site/luizok/semestres-anteriores/semestre-20221/sistemas-digitais-e-microprocessadores">Página Prof. Luiz Mesquita</a>, <a href="https://brasilescola.uol.com.br/redacao/o-seminarioque-e-como-realizalo.htm">Artigo Seminário Brasil Escola</a>, <a href="https://youtu.be/3l6D0rgEdAI">vídeo Seminário (F. Rocha)</a>, <a href="https://youtu.be/Xokn9aWLD08">vídeo Dicas Apresentação (F. May)</a>, <a href="https://brasilescola.uol.com.br/redacao/o-relatorioque-e-como-faze-lo.htm">artigo relatório Brasil Escola</a>, <a href="https://youtu.be/S-4tSLwc_yU">vídeo Elaboração Projeto (A. D. dos Reis)</a>, <a href="https://www.youtube.com/@xxultz/search?query=ganttproject">vídeo GanttProject (C. Schultz)</a>.</li>
+</ul>
+<h3 id="recursos-tecnicos-especificos-robo-seguidor-de-linha">Recursos Técnicos Específicos (Robô Seguidor de Linha)</h3>
+<p>Tutoriais e referências técnicas focadas no robô:</p>
+<ul>
+<li><a href="https://portal.vidadesilicio.com.br/robo-seguidor-de-linha">Artigo Robô seguidor de linha (G. Candido)</a>.</li>
+<li><a href="https://www.youtube.com/shorts/Mmm2BA8QPvg">Vídeo Robô Seguidor de Linha ANDANDO SOZINHO!</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=OjdDcRlEti4">Vídeo Criando Robô Seguidor de Linha com Arduino</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=HjjLJPkaGhc">Vídeo Carrinho com Módulo Seguidor de Linha</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=GjL_Zg6N19Q">Vídeo Obstacle sensor and line sensor arduino (En)</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=eAYiwWx17gk">Vídeo Como Montar seu Primeiro Robô</a>.</li>
+<li><a href="https://www.robocore.net/tutoriais/robo-seguidor-de-linha">Tutorial Robô Seguidor de Linha (Robocore)</a>.</li>
+<li><a href="https://circuitbest.com/line-follower-robot-car-with-arduino-uno-l298n-driver-ir-sensor/">Artigo Line Follower Robot Car Arduino (En)</a>.</li>
+<li><a href="https://youtu.be/vxSI6JNT5t0">Vídeo DIY Mini Sumo Robot (En)</a>.</li>
+<li><a href="https://www.hackster.io/drakerdg/speed-line-follower-robot-v4-9f6df1">projeto Speed Line Follower Robot V4 (En)</a>.</li>
+<li><a href="https://www.hackster.io/mindhe_aniket/line-follower-robot-1db5ae">Projeto Line Follower Robot (1) (En)</a>.</li>
+<li><a href="https://www.shubhamsuresh/line-follower-robot-ebf129">Projeto Line Follower Robot (2) (En)</a>.</li>
+<li><a href="https://events.robocore.net/">Eventos de Robótica (Robocore)</a>.</li>
+<li><a href="https://www.slideshare.net/marcosantonio5811/seguidor-de-linha">Slide Robô Autônomo Explorador de Labirinto (UFAC)</a>.</li>
+<li><a href="https://youtu.be/KY-BdZ-YDMI">Vídeo Robô Seguidor de Linha Completo (RoboCore)</a>.</li>
+<li><a href="https://youtu.be/C59--0zq_y8">Vídeo Monte um robô seguidor de linha (WR Kits)</a>.</li>
+<li><a href="https://br-arduino.org/">Site Tudo sobre Arduino (br-arduino.org)</a>.</li>
+<li><a href="https://youtu.be/HQmhucuK6cE">Simulador online (Tinkercad)</a>.</li>
+<li><a href="https://youtu.be/T1bfWFSJGOA">IDE Arduino (como usar)</a>.</li>
+<li><a href="https://www.lego.com/en-us/themes/mindstorms">Plataforma LEGO Mindstorms</a></li>
+</ul>
+<p><br><sub>Last edited: 2025-07-27 11:50:05</sub></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      CC BY 4.0 License
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.tracking"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

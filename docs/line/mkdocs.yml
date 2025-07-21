@@ -1,0 +1,35 @@
+# Last edited: 2025-07-23
+site_name: "Robot"
+site_description: Autonomous Line-Following Robot
+site_author: Eduardo Furlan
+site_url: https://efurlanm.github.io/robot/
+repo_name: robot
+repo_url: https://www.github.com/efurlanm/robot/
+copyright: CC BY 4.0 License
+docs_dir: src
+site_dir: docs                  # Github compatibility
+theme:
+    # squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+    name: material
+    palette:
+        primary: blue
+        accent: blue
+    features:
+        - header.autohide
+        - navigation.tracking   # address shows active anchor
+markdown_extensions:
+    - tables
+nav:
+    - Home: index.md
+    - Projeto: projeto.md
+    - Metodologia: metodologia.md
+    - Regulamento: regulamento.md
+    - Montagem e Operação: montagem_operacao.md
+    - Comunicacao: comunicacao.md
+    - Galeria e Resultados: galeria.md
+    - Sobre: sobre.md
+not_in_nav: |
+    assets/
+    result20251.md
+exclude_docs: |
+    .*

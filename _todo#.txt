@@ -1,0 +1,10 @@
+
+- está faltando a lista de vencedores de 2025.1
+
+- não pode deixar o prazo final de inscrição para depois, se der uma semana vão fazer no último dia da semana, se der duas semanas vão fazer no último dia da segunda semana.
+
+- procurar onde está o código que eu usava no meu.
+- lista de equipes por projeto (pedir para a ia fazer). tem na lista de presença onde anotei no dia da competição.
+- acrescentar a informação de que tudo sobre o assunto robo deve ser tratado no discord, pelos alunos.
+- o representante de sala deve ficar responsável pelo discord (tenho que liberar a moderação, pega o nome no primeiro dia e já libera), não vou cuidar disso.
+- precisa ter a tabela de classificação, 1, 2, 3o lugares. da última competição (pegar o modelo no site da federal)

@@ -1,0 +1,741 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Autonomous Line-Following Robot">
+      
+      
+        <meta name="author" content="Eduardo Furlan">
+      
+      
+        <link rel="canonical" href="https://efurlanm.github.io/robot/regulamento/">
+      
+      
+        <link rel="prev" href="../metodologia/">
+      
+      
+        <link rel="next" href="../montagem_operacao/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Regulamento - Robot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#regras-para-o-robo-autonomo-seguidor-de-linha" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Robot" class="md-header__button md-logo" aria-label="Robot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Robot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Regulamento
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://www.github.com/efurlanm/robot/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    robot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Robot" class="md-nav__button md-logo" aria-label="Robot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Robot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://www.github.com/efurlanm/robot/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    robot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projeto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metodologia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metodologia
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Regulamento
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Regulamento
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introdução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-a-competicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. A Competição
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-especificacoes-dos-robos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Especificações dos Robôs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-o-percurso" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. O Percurso
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-tomada-de-tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A Tomada de Tempo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-penalidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Penalidades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../montagem_operacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Montagem e Operação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comunicacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Comunicacao
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../galeria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Galeria e Resultados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sobre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sobre
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introdução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-a-competicao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. A Competição
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-especificacoes-dos-robos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Especificações dos Robôs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-o-percurso" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. O Percurso
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-tomada-de-tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A Tomada de Tempo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-penalidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Penalidades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="regras-para-o-robo-autonomo-seguidor-de-linha">Regras para o Robô Autônomo Seguidor de Linha</h1>
+<p>Esta regra é baseada nas diretrizes disponíveis em: <a href="https://www.ifsp.edu.br/trif">https://www.ifsp.edu.br/trif</a></p>
+<h2 id="1-introducao">1. Introdução</h2>
+<ul>
+<li><strong>Nome da Modalidade:</strong> seguidor de linha</li>
+<li><strong>Número de Robôs por Partida:</strong> um por equipe</li>
+<li><strong>Duração da Tomada de Tempo:</strong> verificar item 5: "A Tomada de Tempo"</li>
+<li><strong>Dimensões aproximadas dos Robôs:</strong> 250 x 250 x 200 mm</li>
+<li><strong>Especificações do Circuito:</strong> verificar item 4: "O Percurso"</li>
+<li><strong>Especificações de Controle:</strong> autônomo</li>
+</ul>
+<h2 id="2-a-competicao">2. A Competição</h2>
+<p>2.1. Seguidor de linha é uma modalidade em que robôs autônomos correm em um percurso especificado por uma linha contínua para determinar qual é o mais rápido.</p>
+<p>2.2. Vencerá o robô que realizar a volta válida mais rápida dentre todas as tomadas de tempo.</p>
+<p>2.3. Será realizado um briefing antes do início da competição para esclarecer e elucidar quaisquer dúvidas dos competidores. É de responsabilidade das equipes interessadas estar presente no briefing com pelo menos um representante no horário combinado.</p>
+<p>2.4. A organização poderá realizar um briefing adicional para discutir qualquer eventualidade, como algo não previsto nestas regras.</p>
+<p>2.5. Em caso de qualquer incidente que não esteja previsto nessas regras ou não tenha sido acordado previamente no briefing, fica a critério da organização do evento como proceder.</p>
+<p>2.6. Os juízes poderão solicitar informações sobre o robô se julgarem necessário. Os juízes têm o poder de desclassificar um robô e de tomar qualquer decisão que achem pertinente durante a competição, desde que devidamente justificada sob o parecer das regras e do briefing.</p>
+<h2 id="3-especificacoes-dos-robos">3. Especificações dos Robôs</h2>
+<p>3.1. Os robôs devem ser totalmente autônomos e com todos os componentes embarcados. Eles não podem ser controlados externamente, com exceção para serem iniciados ou para ajustes de parâmetros.</p>
+<p>3.1.1. Os parâmetros do robô, tais como velocidade, aceleração ou qualquer outro, podem ser alterados, seja por meio de chaves, botões ou de maneira remota, desde que o software já existente assim permita e que isso seja feito apenas entre duas tentativas.</p>
+<p>3.2. As dimensões máximas são aproximadamente 250 mm de comprimento, 250 mm de largura e 200 mm de altura, não podendo alterar suas dimensões durante a tomada de tempo.</p>
+<p>3.3. O robô pode usar métodos de empuxo e/ou sucção que aumentem a força normal em relação ao solo. Métodos permitidos se estendem mas não se limitam a turbinas, hélices e ventoinhas. O mecanismo deve ser montado sobre o chassi do robô, podendo ficar sobre os demais componentes, sobre as rodas, ou até mesmo nas laterais do robô, desde que não ultrapasse as dimensões máximas permitidas.</p>
+<p>3.3.1. Se o sistema de aumento de força normal do robô causar um dano à pista durante testes ou tomadas de tempo, o robô poderá ser desclassificado pelo juiz.</p>
+<p>3.4. É proibido adicionar qualquer produto aos pneus de modo a alterar o poder de tração do robô em relação ao solo.</p>
+<p>3.5. É de responsabilidade do competidor provar que o seu robô é único e o mesmo utilizado em toda a competição para cada inscrição. Em caso de robôs iguais ou muito parecidos, o competidor ou a equipe precisa adotar elementos mecânicos não intercambiáveis que possam identificar a singularidade de cada robô, como, por exemplo, uma característica mecânica (cor ou formato do chassi, entre outros). Se o juiz julgar que as diferenças não são suficientes, apenas um dos robôs será autorizado a competir e os demais serão desclassificados.</p>
+<p>3.6. Todos os robôs devem ser aprovados por uma inspeção antes de cada tomada de tempo.</p>
+<h2 id="4-o-percurso">4. O Percurso</h2>
+<p>4.1. O percurso é o trajeto definido por uma linha branca que se estende a partir de uma marcação de partida até uma marcação de chegada.</p>
+<p>4.2. A superfície da pista é composta por uma ou mais mantas emborrachadas de cor preta colocadas sobre uma superfície plana, podendo conter emendas. Possíveis desníveis poderão ocorrer e serão minimizados da melhor forma possível com fita preta nas emendas. De qualquer forma, os robôs deverão ser capazes de superar tais desníveis (± 3 mm).</p>
+<p>4.3. Não serão aceitas reclamações sobre a aderência da pista, desde que seja respeitado o item 4.2.</p>
+<p>4.4. O percurso é indicado por uma linha branca de 19 ± 1 mm de largura. O comprimento total da linha deve ser de no máximo 60 m.</p>
+<p>4.5. A linha consiste em combinações de retas e arcos. A linha pode cruzar sobre si.</p>
+<p>4.6. Quando houver um cruzamento, o ângulo de intersecção das linhas será de 90 ± 5° (vide figura 1). As partes das linhas 250 mm antes e 250 mm depois do cruzamento serão retas.</p>
+<p><img alt="Figura 1: ângulo do cruzamento e espessura da linha." src="../img/figura1.png" /><br />
+<em>Figura 1: ângulo do cruzamento e espessura da linha.</em></p>
+<p>4.7. A linha de partida e a linha de chegada estão localizadas em uma reta do percurso. A linha de chegada está localizada a um metro para trás da linha de partida. Há marcações no lado direito da linha (em relação ao sentido do percurso) indicando os pontos de partida e de chegada (vide figuras 2 e 3).</p>
+<p><img alt="Figura 2: marcações de partida e de chegada de acordo com o sentido do percurso." src="../img/figura2.png" /><br />
+<em>Figura 2: marcações de partida e de chegada de acordo com o sentido do percurso.</em></p>
+<p>4.8. A área da pista a qual se estende entre o ponto de partida e o ponto de chegada, considerando 200 mm à direita da linha e 200 mm à esquerda da linha, é denominada "área de partida-chegada" (vide figura 3).</p>
+<p><img alt="Figura 3: área de partida-chegada." src="../img/figura3.png" /><br />
+<em>Figura 3: área de partida-chegada.</em></p>
+<p>4.9. Um portão de partida e um de chegada podem ser colocados nas linhas de partida e de chegada, respectivamente. Estes portões devem ter pelo menos 400 mm de largura e 200 mm de altura no interior.</p>
+<p>4.10. A linha que define o percurso deve manter uma distância de pelo menos 200 mm dos portões de partida e de chegada em toda a extensão do trajeto.</p>
+<p>4.11. A linha que define o percurso deve manter uma distância de pelo menos 200 mm das bordas da pista em toda a extensão do trajeto.</p>
+<p>4.12. As distâncias entre os diferentes trechos que compõem o percurso devem ser de pelo menos 200 mm.</p>
+<p>4.13. A linha 250 mm antes e 250 mm depois da área partida-chegada” é reta.</p>
+<p>4.14. O raio dos arcos é de no mínimo 100 mm (vide figura 4).</p>
+<p>4.15. Haverá uma marcação no lado esquerdo da linha (em relação ao sentido do percurso) no ponto em que houver alteração da curvatura (vide figura 4).</p>
+<p>4.16. Um percurso pode ter arcos com diferentes curvaturas ligadas continuamente, sempre observando os itens 4.13 e 4.14 (vide figura 4).</p>
+<p><img alt="Figura 4: raios e marcações de mudança de curvatura." src="../img/figura4.png" /><br />
+<em>Figura 4: raios e marcações de mudança de curvatura.</em></p>
+<p>4.17. Erros de no máximo ± 3 mm no comprimento e na distância das marcações de curvas e largada e chegada para a pista serão considerados aceitáveis.</p>
+<p>4.18. O circuito é montado na horizontal, porém partes dele podem ser inclinadas em até 5°.</p>
+<p>4.19. As tonalidades da linha e da pista estão sujeitas a possíveis variações, dependendo do fornecedor dos materiais utilizados na confecção das mesmas, porém existe um grande contraste entre o branco da faixa e o preto da pista.</p>
+<p>4.20. Qualquer contestação sobre a conformidade da pista deve ser imediatamente notificada à organização, desde que a competição não tenha sido iniciada. Ficará a critério da própria organização sobre como proceder.</p>
+<h2 id="5-a-tomada-de-tempo">5. A Tomada de Tempo</h2>
+<p>5.1. As tomadas de tempo serão realizadas durante um período estipulado pela organização e informadas com antecedência. Os competidores farão suas tomadas por ordem de chegada e de forma organizada.</p>
+<p>5.2. A área delimitada e sinalizada ao redor da pista oficial é chamada de "área de tomada de tempo".</p>
+<p>5.3. Cada tomada de tempo terá uma duração máxima de 5 minutos e será iniciada no instante em que o robô adentrar na "área de tomada de tempo".</p>
+<p>5.4. São permitidos apenas dois integrantes da equipe que está tomando tempo na "área de tomada de tempo".</p>
+<p>5.4.1. Um terceiro membro será permitido na “área de tomada de tempo" para a filmagem do robô, porém ele deverá manter uma distância segura ao redor de toda a área da pista.</p>
+<p>5.5. O robô deverá iniciar parado sobre a linha que define o trajeto e dentro da zona de partida-chegada para, em seguida, percorrer o circuito na direção correta.</p>
+<p>5.6. O robô deverá percorrer o circuito tomando como referência a linha branca. O corpo do robô deverá ficar sobre a linha durante todo o percurso. Caso o robô saia completamente de cima da linha branca, será considerado que o robô saiu do percurso e a volta será invalidada.</p>
+<p>5.6.1. Em caso de contestações sobre a saída ou não de um robô da pista, vindas por parte do competidor ou de outros competidores, o juiz irá avaliar todas as provas em vídeo feitas pelas equipes ao redor que estiverem acompanhando e filmando a tentativa. A decisão do juiz poderá ser alterada se o robô ainda estiver dentro da “área de tomada de tempo".</p>
+<p>5.6.2. Caso as imagens disponíveis sejam inconclusivas para o juiz, será mantida a decisão.</p>
+<h2 id="6-penalidades">6. Penalidades</h2>
+<p>6.1. Constitui motivo de desclassificação e expulsão do evento:</p>
+<p>6.1.1. Insultar ou atacar membros da organização, bem como outros competidores.</p>
+<p>6.1.2. Causar intencionalmente danos à área de competição.</p>
+<p>6.1.3. Causar intencionalmente danos às instalações.</p>
+<p>6.1.4. Causar intencionalmente danos ao robô oponente.</p>
+<p>6.2. Constitui motivo de desclassificação:</p>
+<p>6.2.1. Manipular ou controlar um robô externamente por qualquer meio uma vez que tomada de tempo tenha começado.</p>
+<p>6.2.2. Usar dispositivos que podem causar danos à pista ou que impeçam a continuidade da disputa.</p>
+<p>6.2.3. Causar danos à área de competição.</p>
+<p>6.2.4. Usar dispositivos que possam causar danos físicos às pessoas.</p>
+<p>6.2.5. Exibir condutas antidesportivas.</p>
+<p>6.3. Constitui motivo de advertência:</p>
+<p>6.3.1. Atraso no comparecimento para tomada de tempo.</p>
+<p>6.3.2. Movimentação do robô antes da solicitação pelo juiz.</p>
+<p>6.3.3. Reivindicações por integrantes que não sejam o responsável pela categoria.</p>
+<p>6.3.4. Acesso indevido de integrantes que não sejam operador e/ou assistente na pista.</p>
+<p>6.3.5. "Guardar lugar" na fila de testes da categoria sem robôs em mãos.</p>
+<p>6.4. Os juízes têm autonomia para advertir, desclassificar ou expulsar os participantes nos casos que não tenham sido cumpridas as orientações desse documento.</p>
+<p><br><sub>Last edited: 2025-07-22 21:24:48</sub></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      CC BY 4.0 License
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.tracking"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

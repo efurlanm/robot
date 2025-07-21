@@ -1,0 +1,12 @@
+
+Preciso de uma tabela simples, entregas e datas, baseado em @projeto.md e @robo1.pdf
+
+
+Atualizar os itens faltantes em @projeto.md baseado em @robo1.pdf
+
+
+Eu preciso organizar e distribuir melhor este site, deixando mais fácil de etender, com ar mais formal e acadêmico, de acordo com boas práticas para este tipo de site, existent e na Internet. Não apagar os arquivos antigos, renomear e acrecentar ".bak" se for necesário.
+
+
+
+Criar um "index.md" que é uma landing page para a minha metodologia de aprendizado baseado em projetos. É a página principal do repositório no Github. Não deve estar focado em robo seguidor de linha. O foco é a competição, o uso de jogos como ferramenta de aprendizado. Se basear em sites de universidades que contém páginas dedicadas a competição de rõbos. Ler os arquivos deste repositório para usar como base e ideia para a pagina principal, que deve ser precisa e sucinta.

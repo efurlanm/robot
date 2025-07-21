@@ -1,0 +1,27 @@
+INHERIT: mkdocs.yml
+site_name: Robot
+site_description: Autonomous Line-Following Robot
+site_author: Eduardo Furlan
+site_url: https://efurlanm.github.io/robot/
+repo_name: robot
+repo_url: https://www.github.com/efurlanm/robot/
+copyright: CC BY 4.0 License
+site_dir: /home/x/git/robot/docs/
+extra:
+  generator: true       # "Made with Material for MkDocs"
+theme:
+# squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+    palette:
+        primary: blue
+        accent:  blue
+nav:
+    - Início: index.md
+    - Projeto: projeto.md
+    - Metodologia: metodologia.md
+    - Regulamento: regulamento.md
+    - Montagem e Operação: montagem_operacao.md
+    - Comunicacao: comunicacao.md
+    - Galeria e Resultados: galeria.md
+    - Sobre: sobre.md
+not_in_nav: |
+    gallery/
